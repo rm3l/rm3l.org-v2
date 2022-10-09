@@ -2,6 +2,7 @@ baseURL = "https://rm3l.org/"
 disablePathToLower = true
 languageCode = "en-us"
 title = "Armel Soro's blog"
+theme = "ascii-press"
 
 [markup]
   [markup.goldmark]
