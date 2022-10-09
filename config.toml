@@ -1,0 +1,9 @@
+baseURL = "http://example.org/"
+disablePathToLower = true
+languageCode = "en-us"
+title = "Armel Soro's blog"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
