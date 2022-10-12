@@ -1,0 +1,294 @@
+# https://gohugo.io/getting-started/configuration/
+
+baseURL = "https://rm3l.org"
+
+title = "Armel Soro"
+# copyright = "Armel Soro — All rights reserved."
+
+
+#theme = "ascii-press"
+theme = "m10c"
+
+# generate robots.txt
+enableRobotsTXT = true
+
+disqusShortname = "thecoffeeworkshop"
+# googleAnalytics = "your-google-analytics-id"
+
+languageCode = "en"
+
+# Content without language indicator will default to this language.
+defaultContentLanguage = "en-us"
+
+summarylength = 30
+
+canonifyURLs = false
+preserveTaxonomyNames = true
+
+# Remove accents from URL, otherwise they appear as url-encoded
+removePathAccents = true
+
+# Configure pagination
+paginate = 22
+paginatePath = "page"
+
+
+# Render the default content language in subdir, e.g. content/en/. 
+# The site root / will then redirect to /en/.
+# defaultContentLanguageInSubdir = false
+
+# Enable Emoji emoticons support for page content
+# See https://www.webpagefx.com/tools/emoji-cheat-sheet/
+enableEmoji = true
+
+
+timeout = 60000
+
+[markup]
+#     [markup.goldmark]                   # This is the markdown rendered
+#         [markup.goldmark.renderer]
+#             unsafe = true               # Allow html (needed for some shortcodes)
+
+    [markup.highlight]
+        codeFences = false               # Disables goldmark chroma syntax highlighter
+
+[markup.asciidocext]
+    extensions = ["asciidoctor-diagram"]
+    workingFolderCurrent = true
+    trace = true
+    failureLevel = "fatal"
+
+    preserveTOC = false # for debug
+
+    [markup.asciidocext.attributes]
+        "toc" = ""
+        "docinfo" = "shared"
+        "nofooter" = ""
+        "skip-front-matter" = ""
+        "library" = "asciidoctor-ruby"
+        "icons" = "font"
+        "sectlinks" = ""
+        "sectanchors" = ""
+        "figure-caption!" = ""
+        "source-highlighter" = "highlightjs"
+        "experimental" = "true"
+#        "toc-title!" = ""
+        "plantuml-format" = "svg" # https://github.com/asciidoctor/asciidoctor-diagram/commit/642f17283834405088d6784e95d8b8dac62c17dc
+        "ditaa-format" = "svg"
+        "diagram-svg-type" = "inline"
+        "image-assets" = "/assets"
+#        "imagesoutdir" = ""
+#        "diagram-imagesdir" = ".asciidoctor/diagram"
+#        "cachedir" = ".asciidoctor/diagram"
+#        "diagram-autoimagesdir" = ""
+#        "imagesdir" = "/"
+        "allow-uri-read" = "" # Enable link includes
+
+[outputFormats]
+    [outputFormats.manifest]
+        name = "manifest"
+        baseName = "manifest"
+        mediaType = "application/json"
+        notAlternative = "true"
+    [outputFormats.browserconfig]
+        name = "browserconfig"
+        baseName = "browserconfig"
+        mediaType = "application/xml"
+        notAlternative = "true"
+
+[outputs]
+    home = [ "HTML", "RSS", "MANIFEST", "BROWSERCONFIG"]
+
+[author]
+    name = "Armel Soro"
+    email = "armel@rm3l.org"
+    twitter = "rm3l"
+
+# for use in templates
+## Site Settings
+[params]
+    author = "Armel Soro"
+    title = "Armel Soro's blog"
+    authorimage = "/social-sharing.png"
+    # Site description
+    description = "Open-Source and Distributed Systems Enthusiast."
+
+
+    ### Twitter card / open graph
+    # Modified from universal theme
+    # https://github.com/devcows/hugo-universal-theme/blob/232f219ee77aee3b539ed18417c02e328c3b4630/layouts/partials/head.html#L59-L101
+    # https://github.com/devcows/hugo-universal-theme#meta-tags
+    images = ["/android-192-favicon.png"]
+    default_sharing_image = "/social-sharing.png"
+    # defaultKeywords = ["java", "jvm", "system"]
+    defaultDescription = "Open-Source and Distributed Systems Enthusiast."
+    twitter_author = "rm3l"
+    twitter_site = "rm3l"
+    ###
+
+    # Favicon file (relative to baseURL - place below static or assets folder)
+    # favicon = "favicon.png"
+    # Custom css file (relative to baseURL - place below static or assets folder)
+    # css = "custom.css"
+
+    # Define formatting of dates
+    # (optional, falls back to RFC822 format if not set)
+    # For reference to date and time formatting, see:
+    # https://gohugo.io/functions/format/#hugo-date-and-time-templating-reference
+    # Make sure to set showMetaDates to true to see any dates
+    dateformat = "2006-01-02"
+
+    # sidebar, copyright & license
+    copyright = "Armel Soro"
+    since = 2010
+    license = "CC BY-SA 4.0"
+    licenseURL = "https://creativecommons.org/licenses/by-sa/4.0"
+    showBuiltWith = false
+
+    # https://highlightjs.org
+    highlightjs = true
+    highlightjsstyle = "a11y-light"
+    highlightjsdarkstyle = "gruvbox-dark"
+    # highlightjslanguages = ["..."]
+
+    # Table of contents
+    #toc = none, "hugo", or "tocbot" (for tocboot configuration : layouts/partials/page-single/footer.html)
+    toc = "hugo"
+
+    mainSections = ["posts"]
+
+    landingLastPosts = 10
+    disqusIdentifierBaseURL = "https://rm3l.org"
+
+    taxonomyIndexThreshold = 20
+
+    githubEdit= "https://github.com/rm3l/rm3l.org/edit/hugo-sources/content/"
+
+## Social Accounts
+[params.social]
+    github = "rm3l"
+    # speakerdeck = "rm3l"
+    linkedin = "armelsoro"
+    twitter = "rm3l"
+    stackoverflow = "1877067/rm3l"
+    email = "armel@rm3l.org"
+    gravatar = "armel@rm3l.org"
+
+[permalinks]
+    posts = "/:year/:month/:day/:slug/"
+    drafts = "/:section/:year/:month/:day/:slug/"
+
+# Define all supported taxonomies (add series to the default)
+[taxonomies]
+    tags = "tags"
+    categories = "categories"
+    series = "series"
+
+
+
+[services.rss]
+    # limit the length of the rss feed (default: unlimited)
+    limit = 0
+
+
+[menu]
+    [[menu.main]]
+        # name = "Home"
+        # pre = "<span class='fa-icon'><i class='fas fa-home'></i></span><code>cd <em>~</em></code>"
+        pre = "<span class='fa-icon'><i class='fas fa-home'></i></span>Home"
+        url = "/"
+        weight = -100
+
+    # Configure main menu entries (header)
+    # Currently set to list all taxonomies and posts
+    [[menu.main]]
+        identifier = "post"
+        # name = "Posts"
+        title = "All posts"
+        pre = "<span class='fa-icon'><i class='fas fa-stream'></i></span>Posts"
+        # pre = "<span class='fa-icon'><i class='fas fa-stream'></i></span><code>ls <em>posts/*</em></code>"
+        # pre = "<i class='fas fa-blog'></i> <code>ls posts/*</code>"
+        # pre = "<i class='far fa-newspaper'></i> <code>ls posts/*</code>"
+        url = "/posts/"
+        weight = 1
+
+    # [[menu.main]]
+    #     identifier = "categories"
+    #     name = "Categories"
+    #     title = "All categories"
+    #     url = "/categories/"
+    #     weight = 2
+
+    [[menu.main]]
+        identifier = "series"
+        # name = "Series"
+        # pre = "<span class='fa-icon'><i class='fas fa-list-alt'></i></span><code>grep -o <em>series</em> posts/* | sort -u</code>"
+        # pre = "<i class='fa fa-object-group'></i> <code>grep posts/* series | sort | uniq</code>"
+        pre = "<span class='fa-icon'><i class='fas fa-list-alt'></i></span>Series"
+        title = "All series"
+        url = "/series/"
+        weight = 2
+
+    [[menu.main]]
+        identifier = "tags"
+        # name = "Tags"
+        # pre = "<span class='fa-icon'><i class='fas fa-tags'></i></span><code>grep -o <em>tags</em> posts/* | sort -u</code>"
+        pre = "<span class='fa-icon'><i class='fas fa-tags'></i></span>Tags"
+        title = "All tags"
+        url = "/tags/"
+        weight = 3
+
+    [[menu.main]]
+        identifier = "whoami"
+        # name = "Who Am I ?"
+        # pre = "<span class='fa-icon'><i class='fas fa-id-card'></i></span><code>whoami</code>"
+        pre = "<span class='fa-icon'><i class='fas fa-id-card'></i></span>About me"
+        title = "About me"
+        weight = 5
+        url = "/whoami/"
+
+    [[menu.main]]
+        identifier = "coolstuff"
+        # name = "Cool stuff"
+        pre = "<span class='fa-icon'><i class='fas fa-thumbtack'></i></span><code>cd <em>cool-stuff</em></code>"
+        title = "Cool stuff"
+        weight = 4
+        url = "/cool-stuff/"
+
+    # Define the entries for post metadata
+    # Identifiers should match with the taxonomy entries
+    [[menu.meta]]
+        identifier = "categories"
+        name = "Categories"
+        weight = 1
+    [[menu.meta]]
+        identifier = "series"
+        name = "Series"
+        weight = 2
+    [[menu.meta]]
+        identifier = "tags"
+        name = "Tags"
+        weight = 3
+
+
+    # Add some footer links to your likings
+    [[menu.footer]]
+        name = "GitHub"
+        title = "Sources"
+        url = "https://github.com/rm3l/rm3l.org"
+        weight = 1
+
+[params.search]
+client = "algolia" # algolia / fuse / lunr
+
+# [languages]
+# # edit this block for your own language
+# [languages.en]
+# lang = "en"
+# languageName = "English"
+# weight = 1
+
+# [languages.fr]
+# lang = "fr"
+# languageName = "French"
+# weight = 1
