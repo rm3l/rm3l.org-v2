@@ -1,12 +1,12 @@
-+++
-author = "Armel Soro"
-date = 2019-02-10T19:41:05Z
-description = ""
-draft = true
-slug = "graalvm-with-jpa-based-applications-part-2"
-title = "GraalVM with JPA-based applications (Part 2)"
+---
+author: "Armel Soro"
+date: 2019-02-10T19:41:05Z
+description: ""
+draft: true
+slug: "graalvm-with-jpa-based-applications-part-2"
+title: "GraalVM with JPA-based applications (Part 2)"
 
-+++
+---
 
 
 In the first part of this blog post, ...
