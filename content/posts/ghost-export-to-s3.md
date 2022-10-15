@@ -3,12 +3,10 @@ author: "Armel Soro"
 categories: ["portfolio-kubernetes", "kubernetes", "helm", "helm-chart"]
 date: 2021-04-12T20:38:14Z
 description: ""
-draft: false
+draft: true
 slug: "ghost-export-to-s3"
 tags: ["portfolio-kubernetes", "kubernetes", "helm", "helm-chart"]
 title: "ghost-export-to-s3"
-hiddenFromSearch: true
-hiddenFromHomePage: true
 
 ---
 

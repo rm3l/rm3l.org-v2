@@ -3,12 +3,10 @@ author: "Armel Soro"
 categories: ["work", "portfolio-kubernetes", "helm", "kubernetes", "k8s", "helm-chart", "helm-repo"]
 date: 2021-04-12T20:23:44Z
 description: ""
-draft: false
+draft: true
 slug: "helm-charts"
 tags: ["work", "portfolio-kubernetes", "helm", "kubernetes", "k8s", "helm-chart", "helm-repo"]
 title: "helm-charts"
-hiddenFromSearch: true
-hiddenFromHomePage: true
 ---
 
 
