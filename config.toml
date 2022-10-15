@@ -67,6 +67,14 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     name = "Categories"
     url = "/categories/"
     title = ""
+  [[menu.main]]
+    weight = 4
+    identifier = "contact"
+    pre = ""
+    post = ""
+    name = "Contact"
+    url = "/contact/"
+    title = ""
 
 [params]
   # site default theme ["auto", "light", "dark"]
@@ -192,7 +200,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
       # title shown in home page (HTML format is supported)
       title = "Armel Soro"
       # subtitle shown in home page (HTML format is supported)
-      subtitle = "Thoughts, stories and ideas from an Open-Source and Distributed Systems Enthusiast."
+      subtitle = "Thoughts, stories and ideas."
       # whether to use typeit animation for subtitle
       typeit = true
       # whether to show social links
@@ -674,21 +682,21 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
         name = "Categories"
         url = "/categories/"
         title = ""
-    #   [[languages.en.menu.main]]
-    #     weight = 5
-    #     identifier = "about"
-    #     pre = ""
-    #     post = ""
-    #     name = "About"
-    #     url = "/about/"
-    #     title = ""
       [[languages.en.menu.main]]
-        weight = 6
+        weight = 4
+        identifier = "contact"
+        pre = ""
+        post = ""
+        name = "Contact"
+        url = "/contact/"
+        title = ""
+      [[languages.en.menu.main]]
+        weight = 5
         identifier = "github"
         pre = "<i class='fab fa-github fa-fw' aria-hidden='true'></i>"
         post = ""
         name = ""
-        url = "https://github.com/rm3l/rm3l.org"
+        url = "https://github.com/rm3l/rm3l.org-v2"
         title = "GitHub"
     [languages.en.params]
       [languages.en.params.search]
@@ -700,10 +708,10 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
         snippetLength = 30
         highlightTag = "em"
         absoluteURL = false
-        [languages.en.params.search.algolia]
-          index = "hugo"
-          appID = "TL0TU6FTW0"
-          searchKey = "d82d62ab8a2ddebeb664f54146414dd9"
+        # [languages.en.params.search.algolia]
+        #   index = "hugo"
+        #   appID = "TL0TU6FTW0"
+        #   searchKey = "d82d62ab8a2ddebeb664f54146414dd9"
       [languages.en.params.home]
         rss = 10
         [languages.en.params.home.profile]
