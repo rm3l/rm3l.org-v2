@@ -692,6 +692,14 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
         title = ""
       [[languages.en.menu.main]]
         weight = 5
+        identifier = "status-dashboard"
+        pre = "<i class='fa-solid fa-gauge-high' aria-hidden='true'></i>"
+        post = ""
+        name = ""
+        url = "https://status.rm3l.org"
+        title = "Status Dashboard"
+      [[languages.en.menu.main]]
+        weight = 6
         identifier = "github"
         pre = "<i class='fab fa-github fa-fw' aria-hidden='true'></i>"
         post = ""
