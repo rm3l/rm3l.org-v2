@@ -29,14 +29,6 @@
 
 ![demo](https://raw.githubusercontent.com/rm3l/rm3l.org-v2/main/assets/images/home_preview.png)
 
-## Developed by
-
-* Armel Soro
-  * [keybase.io/rm3l](https://keybase.io/rm3l)
-  * [rm3l.org](https://rm3l.org) - &lt;armel@rm3l.org&gt; - [@rm3l](https://twitter.com/rm3l)
-  * [paypal.me/rm3l](https://paypal.me/rm3l)
-  * [coinbase.com/rm3l](https://www.coinbase.com/rm3l)
-
 ## License
 
     The MIT License (MIT)
