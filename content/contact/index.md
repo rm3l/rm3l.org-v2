@@ -3,6 +3,13 @@ title: "Contact Me"
 date: 2021-08-02T22:04:49+08:00
 draft: false
 description: "Contact Armel Soro"
+
+comment:
+  enable: false
+share:
+  enable: false
+toc:
+  enable: false
 ---
 
 <link rel="stylesheet" href="/css/form.css">
