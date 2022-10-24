@@ -7,7 +7,7 @@ draft: false
 image: "https://images.unsplash.com/photo-1547893547-7c2ab2cc9689?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=2000&fit=max&ixid=eyJhcHBfaWQiOjExNzczfQ"
 slug: "using-system-envvars-with-kustomize"
 summary: "After a general overview of what Kustomize allows to do, this blog post is more about  giving few tips about how we can leverage system environment variables to parameterize Kustomize files."
-tags: ["kubernetes", "kustomize", "continuous-deployment"]
+tags: ["kubernetes", "kustomize", "ci", "cd"]
 title: "Using system environment variables with Kustomize"
 resources:
 - name: "featured-image"
