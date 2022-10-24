@@ -1,0 +1,48 @@
+schemaVersion: 2.2.0
+
+metadata:
+  description: The static website behind rm3l.org, powered by Hugo and FeelIt
+  displayName: rm3l.org
+  language: Go
+  name: rm3l-org-v2
+  projectType: Go
+  tags:
+  - Go
+  - Hugo
+  version: 2.0.0
+
+components:
+- name: runtime
+  container:
+    image: quay.io/devfile/golang:latest
+    command:
+    - tail
+    args:
+    - -f
+    - /dev/null
+    memoryLimit: 1024Mi
+    mountSources: true
+    endpoints:
+    - name: hugo
+      targetPort: 1313
+
+commands:
+- id: 0-install-hugo
+  exec:
+    commandLine: |
+      curl -sL https://github.com/gohugoio/hugo/releases/download/v0.104.3/hugo_extended_0.104.3_linux-amd64.tar.gz | tar -vxzC /usr/local/bin
+    component: runtime
+
+- id: 1-start-hugo-server
+  exec:
+    commandLine: hugo server --verbose --watch --buildDrafts --disableFastRender
+    component: runtime
+    hotReloadCapable: false
+    group:
+      isDefault: true
+      kind: run
+    workingDir: ${PROJECT_SOURCE}
+
+events:
+  postStart:
+  - 0-install-hugo
