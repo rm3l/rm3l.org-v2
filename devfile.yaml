@@ -37,7 +37,7 @@ commands:
   exec:
     commandLine: hugo server --verbose --watch --buildDrafts --disableFastRender
     component: runtime
-    hotReloadCapable: false
+    hotReloadCapable: true
     group:
       isDefault: true
       kind: run
