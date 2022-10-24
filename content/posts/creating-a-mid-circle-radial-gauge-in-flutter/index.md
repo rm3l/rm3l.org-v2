@@ -1,6 +1,6 @@
 ---
 author: "Armel Soro"
-categories: ["flutter", "gauge", "animation", "dart", "android"]
+categories: ["Blogs"]
 date: 2020-10-16T20:20:00Z
 description: ""
 draft: false

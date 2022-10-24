@@ -1,6 +1,6 @@
 ---
 author: "Armel Soro"
-categories: ["helm", "helm-chart", "kubernetes", "dynamic-data", "gotpl"]
+categories: ["Blogs"]
 date: 2021-10-06T20:01:00Z
 description: ""
 draft: false

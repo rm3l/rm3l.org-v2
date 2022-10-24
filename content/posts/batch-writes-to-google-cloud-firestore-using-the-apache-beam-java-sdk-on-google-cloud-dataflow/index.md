@@ -1,13 +1,13 @@
 ---
 author: "Armel Soro"
-categories: ["data-pipeline", "java", "apache-beam", "google-cloud", "google-cloud-dataflow", "google-cloud-firestore"]
+categories: ["Blogs"]
 date: 2021-04-23T20:35:00Z
 description: ""
 draft: false
 image: "https://images.unsplash.com/photo-1609923519519-7f470620fa10?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTc3M3wwfDF8c2VhcmNofDEyfHxmYXN0fGVufDB8fHx8MTYyMzM2NjUxNA&ixlib=rb-1.2.1&q=80&w=2000"
 slug: "batch-writes-to-google-cloud-firestore-using-the-apache-beam-java-sdk-on-google-cloud-dataflow"
 summary: "On how to leverage Apache Beam DoFn lifecycle methods to optimize writing to Google Cloud Firestore, when running in Google Cloud Dataflow."
-tags: ["data-pipeline", "java", "apache-beam", "google-cloud", "google-cloud-dataflow", "google-cloud-firestore"]
+tags: ["data-pipeline", "java", "apache-beam", "google-cloud", "dataflow", "firestore"]
 title: "Batch writes to Google Cloud Firestore using the Apache Beam Java SDK on Google Cloud Dataflow"
 resources:
 - name: "featured-image"

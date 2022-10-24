@@ -1,13 +1,13 @@
 ---
 author: "Armel Soro"
-categories: ["ghost", "kubernetes", "backup", "cronjob", "init-container", "aws", "s3"]
+categories: ["Blogs"]
 date: 2021-01-03T20:14:00Z
 description: ""
 draft: false
 image: "https://images.unsplash.com/photo-1565486384667-6d87dbd2f02b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwxMTc3M3wwfDF8c2VhcmNofDEzNnx8c3RvcmFnZXxlbnwwfHx8&ixlib=rb-1.2.1&q=80&w=2000"
 slug: "leveraging-kubernetes-cronjobs-for-automated-backups-of-a-headless-ghost-blog-to-aws-s3"
 summary: "On how to leverage Kubernetes CronJobs to implement a simple automated backup solution of a headless Ghost blog to S3."
-tags: ["ghost", "kubernetes", "backup", "cronjob", "init-container", "aws", "s3"]
+tags: ["ghost", "kubernetes", "backup", "cronjob", "aws", "s3"]
 title: "Leveraging Kubernetes CronJobs for automated backups of a headless Ghost blog to AWS S3"
 resources:
 - name: "featured-image"

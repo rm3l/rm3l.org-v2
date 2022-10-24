@@ -1,13 +1,13 @@
 ---
 author: "Armel Soro"
-categories: ["graalvm", "graal", "jpa", "java", "ruby", "native-image", "jit", "aot", "jvm", "jdk"]
+categories: ["Blogs"]
 date: 2019-01-11T19:02:00Z
 description: ""
 draft: false
 image: "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=2000&fit=max&ixid=eyJhcHBfaWQiOjExNzczfQ"
 slug: "building-graalvm-nativeimages-with-jpa-part1"
 summary: "The goal of this blog post is to go beyond the basic HelloWorld program, and see how we can leverage GraalVM against a sample real-world JPA-based application, able to interact with a database. We will walk through what can be done along with the potential limitations. "
-tags: ["graalvm", "graal", "jpa", "java", "ruby", "native-image", "jit", "aot", "jvm", "jdk"]
+tags: ["graalvm", "jpa", "java", "ruby", "native-image", "jit", "aot"]
 title: "GraalVM with JPA-based applications (Part 1)"
 resources:
 - name: "featured-image"

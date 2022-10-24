@@ -1,13 +1,13 @@
 ---
 author: "Armel Soro"
-categories: ["android", "aosp", "network", "http", "https", "security", "apps", "mobile"]
+categories: ["Blogs"]
 date: 2019-03-21T22:32:00Z
 description: ""
 draft: false
 image: "https://images.unsplash.com/photo-1535378273068-9bb67d5beacd?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=2000&fit=max&ixid=eyJhcHBfaWQiOjExNzczfQ"
 slug: "fixing-cleartext-traffic-errors-on-android-pie-and-higher"
 summary: "This blog post covers different strategies to fix Cleartext Traffic errors in Android Pie 9.0 and beyond."
-tags: ["android", "aosp", "network", "http", "https", "security", "apps", "mobile"]
+tags: ["android", "network", "http", "security", "apps", "mobile"]
 title: "Fixing Cleartext Traffic Errors in Android Pie 9.0 and higher"
 resources:
 - name: "featured-image"

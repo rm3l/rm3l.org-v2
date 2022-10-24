@@ -1,6 +1,6 @@
 ---
 author: "Armel Soro"
-categories: ["jpa", "datanucleus", "enhancement", "gradle", "weaving", "oss"]
+categories: ["Blogs"]
 date: 2018-11-11T20:02:00Z
 description: ""
 draft: false

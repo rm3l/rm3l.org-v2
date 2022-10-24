@@ -1,13 +1,13 @@
 ---
 author: "Armel Soro"
-categories: ["vi", "vim"]
+categories: ["Blogs"]
 date: 2018-08-15T17:33:00Z
 description: ""
 draft: false
 image: "https://images.unsplash.com/photo-1542852869-ecc293ff89c0?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=2000&fit=max&ixid=eyJhcHBfaWQiOjExNzczfQ"
 slug: "save-read-only-file-vi-vim"
 summary: "How to save a read-only file edited with Vi or Vim without losing your changes"
-tags: ["vi", "vim"]
+tags: ["vi", "vim", "root"]
 title: "Saving a read-only file edited with Vi/Vim"
 resources:
 - name: "featured-image"

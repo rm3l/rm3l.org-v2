@@ -1,6 +1,6 @@
 ---
 author: "Armel Soro"
-categories: ["jpa", "datanucleus", "enhancement", "hibernate", "eclipselink", "gradle", "weaving"]
+categories: ["Blogs"]
 date: 2018-10-29T20:39:00Z
 description: ""
 draft: false

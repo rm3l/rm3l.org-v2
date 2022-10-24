@@ -1,13 +1,13 @@
 ---
 author: "Armel Soro"
-categories: ["ghost", "blog", "kubernetes", "gitlab", "continuous-deployment", "hetzner"]
+categories: ["Blogs"]
 date: 2019-10-29T21:09:00Z
 description: ""
 draft: false
 image: "https://images.unsplash.com/photo-1471107340929-a87cd0f5b5f3?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=2000&fit=max&ixid=eyJhcHBfaWQiOjExNzczfQ"
 slug: "this-ghost-blog-is-now-running-with-lets-encrypt-in-a-cheap-bare-metal-kubernetes-cluster-on-hetzner-cloud-part-3-3"
 summary: "On how to run a Ghost blog with Let's Encrypt in a cheap bare-metal Kubernetes Cluster in Hetzner Cloud"
-tags: ["ghost", "blog", "kubernetes", "gitlab", "continuous-deployment", "hetzner"]
+tags: ["ghost", "kubernetes", "gitlab", "hetzner", "lets-encrypt", "ci", "cd"]
 title: "This Ghost Blog is now running with Let's Encrypt in a cheap bare-metal Kubernetes Cluster (on Hetzner Cloud) — Part 3/3"
 resources:
 - name: "featured-image"

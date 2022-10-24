@@ -1,12 +1,12 @@
 ---
 author: "Armel Soro"
-categories: ["code", "ghost", "blog", "highlighting", "prism", "prismjs", "cdn", "dart", "syntax"]
+categories: ["Blogs"]
 date: 2018-12-13T20:24:00Z
 description: ""
 draft: false
 image: "https://images.unsplash.com/photo-1528660544347-95a93c58e424?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=2000&fit=max&ixid=eyJhcHBfaWQiOjExNzczfQ"
 slug: "adding-code-syntax-highlighting-to-a-ghost-blog-with-prism-js"
-tags: ["code", "ghost", "blog", "highlighting", "prism", "prismjs", "cdn", "dart", "syntax"]
+tags: ["code", "blog", "highlighting", "prism", "syntax"]
 title: "Adding Code Syntax Highlighting to a Ghost Blog with Prism.js"
 resources:
 - name: "featured-image"

@@ -1,6 +1,6 @@
 ---
 author: "Armel Soro"
-categories: ["junit", "tests", "postgresql", "h2", "hsqldb", "java", "spring"]
+categories: ["Blogs"]
 date: 2018-09-28T18:46:00Z
 description: ""
 draft: false

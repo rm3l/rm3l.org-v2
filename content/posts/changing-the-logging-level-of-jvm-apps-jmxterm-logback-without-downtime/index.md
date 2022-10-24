@@ -1,13 +1,13 @@
 ---
 author: "Armel Soro"
-categories: ["jmx", "jvm", "java", "logging", "logback", "mbean", "monitoring", "slf4j"]
+categories: ["Blogs"]
 date: 2019-02-14T20:45:00Z
 description: ""
 draft: false
 image: "https://images.unsplash.com/photo-1563251478-37462b112536?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=2000&fit=max&ixid=eyJhcHBfaWQiOjExNzczfQ"
 slug: "changing-the-logging-level-of-jvm-apps-jmxterm-logback-without-downtime"
 summary: "We are going to see how to change the logging level of a running JVM application with jmxterm and Logback, without any application downtime"
-tags: ["jmx", "jvm", "java", "logging", "logback", "mbean", "monitoring", "slf4j"]
+tags: ["jmx", "java", "logging", "logback", "mbean", "slf4j"]
 title: "Changing the logging level of a running JVM application with jmxterm and Logback, without any downtime"
 resources:
 - name: "featured-image"

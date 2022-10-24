@@ -1,12 +1,12 @@
 ---
 author: "Armel Soro"
-categories: ["maven", "archetype", "tip", "jvm", "java", "build"]
+categories: ["Blogs"]
 date: 2019-05-15T18:44:00Z
 description: ""
 draft: false
 slug: "about-maven-archetypes"
 summary: "The goal of this tutorial post is to first give a quick introduction to Maven Archetypes, to see how useful they can be and how we can easily create and use one. And finally we will walk through few tips I think can be useful to bear in mind when working with Maven Archetypes."
-tags: ["maven", "archetype", "tip", "jvm", "java", "build"]
+tags: ["maven", "archetype", "jvm", "java", "build"]
 title: "About Maven Archetypes"
 resources:
 - name: "featured-image"

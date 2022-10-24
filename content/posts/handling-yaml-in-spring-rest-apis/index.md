@@ -1,13 +1,13 @@
 ---
 author: "Armel Soro"
-categories: ["spring-boot", "spring", "rest api", "java", "yaml"]
+categories: ["Blogs"]
 date: 2021-08-31T19:06:00Z
 description: ""
 draft: false
 image: "https://images.unsplash.com/photo-1459947727010-6267d2c1232f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTc3M3wwfDF8c2VhcmNofDUzfHxyZXN0JTIwc3ByaW5nfGVufDB8fHx8MTYzODM5ODEzOQ&ixlib=rb-1.2.1&q=80&w=2000"
 slug: "handling-yaml-in-spring-rest-apis"
 summary: "On how to add support for YAML in a Spring Boot based REST API"
-tags: ["spring-boot", "spring", "rest api", "java", "yaml"]
+tags: ["spring-boot", "spring", "rest-api", "java", "yaml"]
 title: "Handling YAML in a Spring Boot based REST API"
 resources:
 - name: "featured-image"

@@ -1,13 +1,13 @@
 ---
 author: "Armel Soro"
-categories: ["gatsbyjs", "reactjs", "netlify", "ghost", "kubernetes", "k8s", "cms", "gatsby", "react", "jamstack"]
+categories: ["Blogs"]
 date: 2020-01-23T20:33:00Z
 description: ""
 draft: false
 image: "https://images.unsplash.com/photo-1518459384564-ecfd8e80721f?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=2000&fit=max&ixid=eyJhcHBfaWQiOjExNzczfQ"
 slug: "migrating-to-the-jamstack-with-gatsby-and-ghost-running-in-kubernetes"
 summary: "This blog post depicts how a last year experiment of running this Ghot blog in Kubernetes went further by migrating to the JAMstack: Gatsby as the FrontEnd (deployed to Netlify) and Ghost as a headless CMS running in Kubernetes."
-tags: ["gatsbyjs", "reactjs", "netlify", "ghost", "kubernetes", "k8s", "cms", "gatsby", "react", "jamstack"]
+tags: ["gatsbyjs", "netlify", "ghost", "kubernetes", "jamstack"]
 title: "Migrating this blog to the JAMstack: Gatsby as the FrontEnd, with Ghost as a headless CMS running in a self-hosted Kubernetes cluster"
 resources:
 - name: "featured-image"

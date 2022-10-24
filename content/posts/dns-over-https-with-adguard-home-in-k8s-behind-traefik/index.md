@@ -1,13 +1,13 @@
 ---
 author: "Armel Soro"
-categories: ["kubernetes", "k8s", "adguard-home", "openwrt", "ddwrt", "dd-wrt", "raspberry-pi", "rpi", "traefik"]
+categories: ["Blogs"]
 date: 2022-01-14T22:30:00Z
 description: ""
 draft: false
 image: "https://images.unsplash.com/photo-1545948548-863537438416?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTc3M3wwfDF8c2VhcmNofDk3fHx0cmFmZmljfGVufDB8fHx8MTY0MTMxNzYyNg&ixlib=rb-1.2.1&q=80&w=2000"
 slug: "dns-over-https-with-adguard-home-in-k8s-behind-traefik"
 summary: "Migration journey of AdGuard Home from a Raspberry Pi in a private network (backed by an OpenWRT Router) to a public Kubernetes cluster, behind a reverse proxy like Traefik."
-tags: ["kubernetes", "k8s", "adguard-home", "openwrt", "ddwrt", "dd-wrt", "raspberry-pi", "rpi", "traefik"]
+tags: ["kubernetes", "adguard-home", "openwrt", "dd-wrt", "raspberry-pi", "traefik"]
 title: "DNS over HTTPS with AdGuard Home running in Kubernetes, behind Traefik"
 resources:
 - name: "featured-image"
