@@ -1,13 +1,15 @@
 baseURL = "https://rm3l.org"
 
 # theme
-theme = "LoveIt"
+# theme = "LoveIt"
+theme = "FeelIt"
 
 # website title
 title = "Armel Soro"
 
 # determines default content language ["en", "zh-cn", "fr", "pl", ...]
 defaultContentLanguage = "en"
+weight = 1
 # language code ["en", "zh-CN", "fr", "pl", ...]
 languageCode = "en"
 # language name ["English", "简体中文", "Français", "Polski", ...]
@@ -16,7 +18,7 @@ languageName = "English"
 hasCJKLanguage = false
 
 # default amount of posts in each pages
-paginate = 5
+paginate = 12
 # google analytics code [UA-XXXXXXXX-X]
 googleAnalytics = ""
 # copyright description used only for seo schema
@@ -77,10 +79,12 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     title = ""
 
 [params]
+  # LoveIt theme version
+  version = "1.0.X"
   # site default theme ["auto", "light", "dark"]
   defaultTheme = "auto"
   # public git repo url only then enableGitInfo is true
-  gitRepo = "https://github.com/rm3l/rm3l.org"
+  gitRepo = "https://github.com/rm3l/rm3l.org-v2"
   # which hash function used for SRI, when empty, no SRI is used
   # ["sha256", "sha384", "sha512", "md5"]
   fingerprint = ""
@@ -92,6 +96,13 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
   description = "Armel Soro"
   # website images for Open Graph and Twitter Cards
   images = ["/logo.png"]
+
+ # PWA config
+  [params.pwa]
+    # whether to enable PWA support
+    enable = true
+    # service-worker version
+    version = "1.0.1"
 
   # Header config
   [params.header]
@@ -105,12 +116,15 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
       logo = ""
       # title name
       name = "Armel Soro"
+      pre = ""
       # you can add extra information before the name (HTML format is supported), such as icons
       # pre = "<i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i>"
       # you can add extra information after the name (HTML format is supported), such as icons
       post = ""
       # whether to use typeit animation for title name
       typeit = false
+      # whether to show RSS icon
+      rss = true
 
   # Footer config
   [params.footer]
@@ -135,7 +149,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     # special amount of posts in each section page
     paginate = 20
     # date format (month and day)
-    dateFormat = "01-02"
+    dateFormat = "January, 1"
     # amount of RSS pages
     rss = 10
 
@@ -144,7 +158,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     # special amount of posts in each list page
     paginate = 20
     # date format (month and day)
-    dateFormat = "01-02"
+    dateFormat = "January, 1"
     # amount of RSS pages
     rss = 10
 
@@ -209,9 +223,10 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
       disclaimer = ""
     # Home page posts
     [params.home.posts]
-      enable = true
+      enable = false
       # special amount of posts in each home posts page
       paginate = 6
+      imagePreview = true
   # Social config in home page
   [params.social]
     GitHub = "rm3l"
@@ -308,6 +323,8 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     fontawesome = true
     # whether to show link to Raw Markdown content of the content
     linkToMarkdown = true
+    # whether to show link to improve the article
+    improveArticle = "https://github.com/rm3l/rm3l.org-v2/edit/main/content/"
     # whether to show the full text content in RSS
     rssFullText = false
     # Table of the contents config
@@ -323,11 +340,11 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
       # whether to show the copy button of the code block
       copy = true
       # the maximum number of lines of displayed code by default
-      maxShownLines = 50
+      maxShownLines = 20
     # KaTeX mathematical formulas config (KaTeX https://katex.org/)
     # KaTeX 数学公式配置 (KaTeX https://katex.org/)
     [params.page.math]
-      enable = false
+      enable = true
       # default inline delimiter is $ ... $ and \( ... \)
       inlineLeftDelimiter = ""
       inlineRightDelimiter = ""
@@ -534,13 +551,13 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
   # Cookie consent config
   # Cookie 许可配置
   [params.cookieconsent]
-    enable = false
+    enable = true
     # text strings used for Cookie consent banner
     # 用于 Cookie 许可横幅的文本字符串
     [params.cookieconsent.content]
-      message = ""
-      dismiss = ""
-      link = ""
+      message = "This website uses cookies to analyze the general behavior of visitors and improve your experience."
+      dismiss = "Got it"
+      link = "<a href='https://www.cookiesandyou.com/'>Learn More</a>"
 
   # CDN config for third-party library files
   # 第三方库文件的 CDN 设置
@@ -730,6 +747,11 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
           typeit = true
           social = true
           disclaimer = ""
+        [languages.en.params.home.posts]
+          enable = true
+          # special amount of posts in each home posts page
+          paginate = 6
+          imagePreview = true
       [languages.en.params.social]
         GitHub = "rm3l"
         Gitlab = "rm3l"
