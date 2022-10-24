@@ -1,6 +1,6 @@
 +++
 author = "Armel Soro"
-categories = ["git", "github", "gitlab", "pull", "rebase"]
+categories = ["Blogs"]
 date = 2018-10-22T19:20:56Z
 description = ""
 draft = true

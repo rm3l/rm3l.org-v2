@@ -1,6 +1,6 @@
 ---
 author: "Armel Soro"
-categories: ["work", "docker", "kotlin", "springboot", "graphql", "portfolio-docker", "portfolio-kotlin", "spring", "spring-boot"]
+categories: ["Projects"]
 date: 2017-08-03T12:48:00Z
 description: ""
 draft: true

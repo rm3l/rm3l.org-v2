@@ -1,6 +1,6 @@
 ---
 author: "Armel Soro"
-categories: ["work", "go", "golang", "portfolio-go", "sarif", "container-scan"]
+categories: ["Projects"]
 date: 2021-12-01T06:52:00Z
 description: ""
 draft: true

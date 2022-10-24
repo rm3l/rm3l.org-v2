@@ -1,6 +1,6 @@
 ---
 author: "Armel Soro"
-categories: ["work", "android", "java", "kotlin", "dd-wrt", "ddwrt", "router", "openwrt", "tomato", "portfolio-android", "portfolio-java", "portfolio-kotlin"]
+categories: ["Projects"]
 date: 2015-02-02T22:27:00Z
 description: ""
 draft: true

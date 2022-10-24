@@ -1,6 +1,6 @@
 ---
 author: "Armel Soro"
-categories: ["work", "portfolio-other", "github-action", "container-scan", "sarif"]
+categories: ["Projects"]
 date: 2021-12-01T07:00:30Z
 description: ""
 draft: true

@@ -1,6 +1,6 @@
 ---
 author: "Armel Soro"
-categories: ["continuous-integration", "translation", "crowdin", "open-source"]
+categories: ["Blogs"]
 date: 2017-08-27T20:05:43Z
 description: ""
 draft: true

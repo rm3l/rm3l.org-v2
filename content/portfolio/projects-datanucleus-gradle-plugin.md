@@ -1,6 +1,6 @@
 ---
 author: "Armel Soro"
-categories: ["work", "java", "gradle", "jpa", "datanucleus", "portfolio-java"]
+categories: ["Projects"]
 date: 2019-01-14T22:37:00Z
 description: ""
 draft: true

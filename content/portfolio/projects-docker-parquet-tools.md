@@ -1,6 +1,6 @@
 ---
 author: "Armel Soro"
-categories: ["work", "docker", "portfolio-docker"]
+categories: ["Projects"]
 date: 2020-06-13T11:00:00Z
 description: ""
 draft: true

@@ -1,6 +1,6 @@
 ---
 author: "Armel Soro"
-categories: ["work", "php", "css", "html", "other", "portfolio-other"]
+categories: ["Projects"]
 date: 2009-05-15T07:00:00Z
 description: ""
 draft: true

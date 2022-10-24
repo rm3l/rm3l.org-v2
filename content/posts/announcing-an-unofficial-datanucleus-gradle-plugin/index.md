@@ -1,6 +1,6 @@
 ---
 author: "Armel Soro"
-categories: ["Blogs"]
+categories: ["Projects"]
 date: 2018-11-11T20:02:00Z
 description: ""
 draft: false

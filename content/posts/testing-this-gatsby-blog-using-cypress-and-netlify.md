@@ -1,6 +1,6 @@
 +++
 author = "Armel Soro"
-categories = ["tests", "e2e", "cypress", "continuous-integration", "netlify"]
+categories = ["Blogs"]
 date = 2020-01-18T14:46:33Z
 description = ""
 draft = true

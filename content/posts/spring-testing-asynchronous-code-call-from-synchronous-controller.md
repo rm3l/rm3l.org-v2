@@ -1,6 +1,6 @@
 +++
 author = "Armel Soro"
-categories = ["spring", "java", "async", "test", "junit"]
+categories = ["Blogs"]
 date = 2017-10-03T22:37:24Z
 description = ""
 draft = true

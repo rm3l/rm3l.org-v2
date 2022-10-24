@@ -1,6 +1,6 @@
 ---
 author: "Armel Soro"
-categories: ["work", "portfolio-java", "kubernetes", "java", "gradle", "graalvm", "quarkus", "jvm", "graal"]
+categories: ["Projects"]
 date: 2020-05-24T12:09:00Z
 description: ""
 draft: true

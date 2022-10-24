@@ -1,6 +1,6 @@
 ---
 author: "Armel Soro"
-categories: ["work", "java", "now", "zeit", "api", "portfolio-java"]
+categories: ["Projects"]
 date: 2017-07-04T12:55:00Z
 description: ""
 draft: true

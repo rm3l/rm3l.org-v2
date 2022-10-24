@@ -1,6 +1,6 @@
 ---
 author: "Armel Soro"
-categories: ["work", "go", "firebase", "golang", "cloud", "rest api", "api", "rest", "portfolio-go"]
+categories: ["Projects"]
 date: 2017-07-02T10:36:00Z
 description: ""
 draft: true

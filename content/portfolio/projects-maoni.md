@@ -1,6 +1,6 @@
 ---
 author: "Armel Soro"
-categories: ["work", "android", "java", "gradle", "portfolio-android", "portfolio-java", "portfolio-kotlin"]
+categories: ["Projects"]
 date: 2016-05-14T20:36:00Z
 description: ""
 draft: true

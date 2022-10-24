@@ -1,6 +1,6 @@
 +++
 author = "Armel Soro"
-categories = ["docker", "graphql", "graphiql", "api"]
+categories = ["Blogs"]
 date = 2017-08-23T21:11:40Z
 description = ""
 draft = true

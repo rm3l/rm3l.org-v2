@@ -1,6 +1,6 @@
 ---
 author: "Armel Soro"
-categories: ["work", "flutter", "dart", "portfolio-android", "portfolio-flutter", "portfolio-java", "portfolio-kotlin", "android", "kubernetes"]
+categories: ["Projects"]
 date: 2018-03-13T19:51:00Z
 description: ""
 draft: true

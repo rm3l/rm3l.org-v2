@@ -1,6 +1,6 @@
 ---
 author: "Armel Soro"
-categories: ["work", "docker", "android", "portfolio-android", "portfolio-docker"]
+categories: ["Projects"]
 date: 2015-01-15T15:19:00Z
 description: ""
 draft: true

@@ -1,6 +1,6 @@
 ---
 author: "Armel Soro"
-categories: ["work", "graphql", "iana", "microservice", "library", "portfolio-kotlin", "kubernetes", "kotlin", "jvm", "gradle"]
+categories: ["Projects"]
 date: 2017-12-02T15:12:00Z
 description: ""
 draft: true

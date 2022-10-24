@@ -1,6 +1,6 @@
 ---
 author: "Armel Soro"
-categories: ["page-portfolio-home"]
+categories: ["Projects"]
 date: 2018-11-16T21:45:43Z
 description: ""
 draft: true

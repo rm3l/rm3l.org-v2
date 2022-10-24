@@ -1,6 +1,6 @@
 +++
 author = "Armel Soro"
-categories = ["android", "gitlab", "ci", "continuous-integration", "cd", "continuous-deployment"]
+categories = ["Blogs"]
 date = 2017-08-23T21:20:57Z
 description = ""
 draft = true

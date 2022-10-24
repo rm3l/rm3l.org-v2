@@ -1,6 +1,6 @@
 +++
 author = "Armel Soro"
-categories = ["android", "rom", "build", "aosp", "lineageos", "mobile"]
+categories = ["Blogs"]
 date = 2018-10-15T16:47:21Z
 description = ""
 draft = true

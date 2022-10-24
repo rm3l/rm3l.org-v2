@@ -1,6 +1,6 @@
 ---
 author: "Armel Soro"
-categories: ["portfolio-kubernetes", "kubernetes", "helm", "helm-chart"]
+categories: ["Projects"]
 date: 2021-04-12T20:38:14Z
 description: ""
 draft: true

@@ -1,6 +1,6 @@
 +++
 author = "Armel Soro"
-categories = ["dd-wrt", "ddwrt", "router", "ssh"]
+categories = ["Blogs"]
 date = 2017-08-23T21:16:03Z
 description = ""
 draft = true

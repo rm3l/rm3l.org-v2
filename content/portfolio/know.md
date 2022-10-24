@@ -1,6 +1,6 @@
 ---
 author: "Armel Soro"
-categories: ["work", "now", "zeit", "kotlin", "api", "portfolio-kotlin"]
+categories: ["Projects"]
 date: 2017-07-03T13:02:00Z
 description: ""
 draft: true
