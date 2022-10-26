@@ -1,3 +1,6 @@
 .github
 .git
 .odo
+.kubernetes
+.github
+devfile.yaml
