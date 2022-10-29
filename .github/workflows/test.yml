@@ -1,0 +1,63 @@
+name: Test
+
+on:
+  push:
+    branches: [main]
+  
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+    branches: [ main ]
+  pull_request_target:
+    types: [opened, synchronize, reopened, ready_for_review]
+    branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+defaults:
+  run:
+    shell: bash
+
+env:
+  ODO_DISABLE_TELEMETRY: "true"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          submodules: recursive
+
+      - name: Install asdf dependencies
+        uses: asdf-vm/actions/install@v1
+
+      - name: Spawn Kubernetes Cluster and local registry
+        uses: container-tools/kind-action@v2
+        with:
+          version: v0.17.0
+          node_image: kindest/node:v1.25.3
+
+      - name: Deploy the NGINX Ingress Controller in the KinD Cluster
+        run: |
+          kubectl apply -f \
+            https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml
+          kubectl -n ingress-nginx wait deploy/ingress-nginx-controller \
+            --for condition=available \
+            --timeout=60s
+
+      - name: Deploy locally with odo
+        run: |
+          odo deploy -v 4 \
+            --var CONTAINER_IMAGE=${{ env.KIND_REGISTRY }}/rm3l/rm3l.org-v2 \
+            --var CONTAINER_IMAGE_TAG=${{ github.sha }} \
+            --var DOMAIN_NAME=rm3lorg-127-0-0-1.sslip.io
+
+      - name: Test access to contact page
+        run: |
+          wget --no-check-certificate \
+            --tries 10 \
+            -S \
+            -O - \
+            "https://rm3lorg-127-0-0-1.sslip.io/" || exit 1
