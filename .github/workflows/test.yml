@@ -47,6 +47,15 @@ jobs:
             --for condition=available \
             --timeout=60s
 
+      - name: Configure Podman for working with insecure registries
+        run: |
+          cat > /etc/containers/registries.conf.d/kind-registry.conf <<EOF
+          [[registry]]
+          location = "${{ env.KIND_REGISTRY }}"
+          insecure = true
+
+          EOF
+
       - name: Deploy locally with odo
         run: |
           odo deploy -v 4 \
