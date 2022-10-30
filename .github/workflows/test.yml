@@ -20,6 +20,7 @@ defaults:
 
 env:
   ODO_DISABLE_TELEMETRY: "true"
+  PODMAN_CMD: "docker"
 
 jobs:
   test:
