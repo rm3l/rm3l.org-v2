@@ -39,6 +39,7 @@ jobs:
         with:
           version: v0.17.0
           node_image: kindest/node:v1.25.3
+          wait: 300s
 
       - name: Deploy the NGINX Ingress Controller in the KinD Cluster
         run: |
