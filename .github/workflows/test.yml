@@ -31,9 +31,6 @@ jobs:
         with:
           submodules: recursive
 
-      - name: Install asdf dependencies
-        uses: asdf-vm/actions/install@v1
-
       - name: Spawn Kubernetes Cluster and local registry
         uses: container-tools/kind-action@v2
         with:
@@ -50,6 +47,9 @@ jobs:
             --timeout=60s
 
       - run: kubectl get all --all-namespaces
+
+      - name: Install asdf dependencies
+        uses: asdf-vm/actions/install@v1
 
       - name: Deploy locally with odo
         run: |
