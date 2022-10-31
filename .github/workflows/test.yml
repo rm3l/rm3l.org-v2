@@ -48,6 +48,8 @@ jobs:
             --for condition=available \
             --timeout=60s
 
+      - run: kubectl get all --all-namespaces
+
       - name: Deploy locally with odo
         run: |
           odo deploy -v 4 \
