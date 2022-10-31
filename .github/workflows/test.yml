@@ -36,7 +36,6 @@ jobs:
         with:
           version: v0.17.0
           node_image: kindest/node:v1.25.3
-          wait: 300s
 
       - name: Wait for cluster resources to be ready
         run: |
@@ -47,9 +46,10 @@ jobs:
         run: |
           kubectl apply -f \
             https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml
-          kubectl -n ingress-nginx rollout status deployment ingress-nginx-controller --timeout=60s
+          kubectl -n ingress-nginx rollout status deployment ingress-nginx-controller --timeout=300s
 
       - run: kubectl get all --all-namespaces
+        if: ${{ failure() }}
 
       - name: Install asdf dependencies
         uses: asdf-vm/actions/install@v1
