@@ -38,13 +38,16 @@ jobs:
           node_image: kindest/node:v1.25.3
           wait: 300s
 
+      - name: Wait for cluster resources to be ready
+        run: |
+          kubectl -n kube-system rollout status deployment coredns --timeout=60s
+          kubectl -n local-path-storage rollout status deployment local-path-provisioner --timeout=60s
+
       - name: Deploy the NGINX Ingress Controller in the KinD Cluster
         run: |
           kubectl apply -f \
             https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml
-          kubectl -n ingress-nginx wait deploy/ingress-nginx-controller \
-            --for condition=available \
-            --timeout=60s
+          kubectl -n ingress-nginx rollout status deployment ingress-nginx-controller --timeout=60s
 
       - run: kubectl get all --all-namespaces
 
