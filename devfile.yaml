@@ -1,0 +1,106 @@
+schemaVersion: 2.2.0
+
+metadata:
+  description: The static website behind rm3l.org, powered by Hugo and FeelIt
+  displayName: rm3l.org
+  language: Go
+  name: rm3l-org-v2
+  projectType: Go
+  tags:
+  - Go
+  - Hugo
+  version: 2.0.0
+
+variables:
+  ACCESS_PATH: "/"
+  ACCESS_PROTOCOL: https
+  CONTAINER_IMAGE_TAG: 2.0.9
+  CONTAINER_IMAGE: localhost:5000/org.rm3l/rm3l.org
+  CONTAINER_PORT: "80"
+  DOMAIN_NAME: 127.0.0.1.nip.io
+  RESOURCE_NAME: rm3l-org-v2
+
+components:
+- name: runtime
+  container:
+    image: quay.io/devfile/golang:latest
+    command:
+    - tail
+    args:
+    - -f
+    - /dev/null
+    memoryLimit: 1024Mi
+    mountSources: true
+    endpoints:
+    - name: hugo
+      targetPort: 1313
+
+- name: outerloop-build
+  image:
+    imageName: "{{CONTAINER_IMAGE}}:{{CONTAINER_IMAGE_TAG}}"
+    dockerfile:
+      uri: ./Dockerfile
+      args:
+      - --build-arg
+      - 'WEBSITE_PATH={{ ACCESS_PATH }}'
+      - --build-arg
+      - 'BASE_URL={{ ACCESS_PROTOCOL }}://{{ DOMAIN_NAME }}{{ ACCESS_PATH }}'
+      buildContext: ${PROJECT_SOURCE}
+      rootRequired: false
+
+- name: outerloop-deployment
+  kubernetes:
+    uri: ".kubernetes/deployment.yaml"
+
+- name: outerloop-service
+  kubernetes:
+    uri: ".kubernetes/service.yaml"
+
+- name: outerloop-url
+  kubernetes:
+    uri: ".kubernetes/ingress.yaml"
+
+commands:
+- id: 0-install-hugo
+  exec:
+    commandLine: |
+      curl -sL https://github.com/gohugoio/hugo/releases/download/v0.104.3/hugo_extended_0.104.3_linux-amd64.tar.gz | tar -vxzC /usr/local/bin
+    component: runtime
+
+- id: 1-start-hugo-server
+  exec:
+    commandLine: hugo server --verbose --watch --buildDrafts --disableFastRender
+    component: runtime
+    hotReloadCapable: true
+    group:
+      isDefault: true
+      kind: run
+    workingDir: ${PROJECT_SOURCE}
+
+- id: deploy
+  composite:
+    commands:
+    - build-image
+    - k8s-deployment
+    - k8s-service
+    - k8s-url
+    group:
+      isDefault: true
+      kind: deploy
+
+- id: build-image
+  apply:
+    component: outerloop-build
+- id: k8s-deployment
+  apply:
+    component: outerloop-deployment
+- id: k8s-service
+  apply:
+    component: outerloop-service
+- id: k8s-url
+  apply:
+    component: outerloop-url
+
+events:
+  postStart:
+  - 0-install-hugo

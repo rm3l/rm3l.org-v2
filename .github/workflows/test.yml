@@ -1,0 +1,132 @@
+name: Test
+
+on:
+  push:
+    branches: [main]
+  
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+    branches: [ main ]
+  pull_request_target:
+    types: [opened, synchronize, reopened, ready_for_review]
+    branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+defaults:
+  run:
+    shell: bash
+
+env:
+  ODO_DISABLE_TELEMETRY: "true"
+  PODMAN_CMD: "docker"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          submodules: recursive
+
+      - uses: actions/setup-go@v3
+        with:
+          go-version: '^1.17'
+
+      - run: go version
+
+      - name: Install asdf dependencies
+        uses: asdf-vm/actions/install@v1
+
+      - name: Generate KinD Config
+        run: |
+          cat <<EOF > /tmp/kind-config.yaml
+          kind: Cluster
+          apiVersion: kind.x-k8s.io/v1alpha4
+          containerdConfigPatches:
+          -  |-
+             [plugins."io.containerd.grpc.v1.cri".containerd]
+               disable_snapshot_annotations = true
+             [plugins."io.containerd.grpc.v1.cri".registry.mirrors."localhost:5000"]
+               endpoint = ["http://kind-registry:5000"]
+          nodes:
+              - role: control-plane
+                kubeadmConfigPatches:
+                - |
+                  kind: InitConfiguration
+                  nodeRegistration:
+                    kubeletExtraArgs:
+                      node-labels: "ingress-ready=true"
+                extraPortMappings:
+                - containerPort: 80
+                  hostPort: 80
+                  protocol: TCP
+                - containerPort: 443
+                  hostPort: 443
+                  protocol: TCP
+              - role: worker
+          EOF
+
+      - name: Spawn Kubernetes Cluster and local registry
+        uses: container-tools/kind-action@v2
+        with:
+          version: v0.17.0
+          config: /tmp/kind-config.yaml
+          node_image: kindest/node:v1.25.3
+
+      - name: Wait for cluster resources to be ready
+        run: |
+          kubectl -n kube-system rollout status deployment coredns --timeout=60s
+          kubectl -n local-path-storage rollout status deployment local-path-provisioner --timeout=60s
+
+      - name: Deploy the NGINX Ingress Controller in the KinD Cluster
+        run: |
+          kubectl apply -f \
+            https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml
+          kubectl wait --namespace ingress-nginx \
+            --for=condition=ready pod \
+            --selector=app.kubernetes.io/component=controller \
+            --timeout=90s
+
+      - run: |
+          echo ***All***
+          kubectl get all --all-namespaces
+          echo
+          echo ***Events***
+          kubectl get events --all-namespaces
+        if: ${{ failure() }}
+
+      - name: Deploy locally with odo
+        run: |
+          odo deploy -v 4 \
+            --var CONTAINER_IMAGE=localhost:5000/rm3l/rm3l.org-v2 \
+            --var CONTAINER_IMAGE_TAG=${{ github.sha }} \
+            --var DOMAIN_NAME=rm3lorg-127-0-0-1.sslip.io
+
+      - run: |
+          echo ***All***
+          kubectl get all --all-namespaces
+          echo
+          echo ***Events***
+          kubectl get events --all-namespaces
+        if: ${{ failure() }}
+
+      - name: Test access
+        run: |
+          wget --no-check-certificate \
+            --tries=20 \
+            --retry-on-host-error \
+            --retry-on-http-error=404,503 \
+            -S \
+            -O - \
+            "https://rm3lorg-127-0-0-1.sslip.io/" || exit 1
+
+      - run: |
+          echo ***All***
+          kubectl get all --all-namespaces
+          echo
+          echo ***Events***
+          kubectl get events --all-namespaces
+        if: ${{ failure() }}
