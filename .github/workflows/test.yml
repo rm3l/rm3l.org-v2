@@ -113,7 +113,7 @@ jobs:
           kubectl get events --all-namespaces
         if: ${{ failure() }}
 
-      - name: Test access to contact page
+      - name: Test access
         run: |
           wget --no-check-certificate \
             --tries 10 \
