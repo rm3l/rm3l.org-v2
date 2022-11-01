@@ -35,6 +35,8 @@ jobs:
         with:
           go-version: '^1.17'
 
+      - run: go version
+
       - name: Install asdf dependencies
         uses: asdf-vm/actions/install@v1
 
@@ -120,7 +122,17 @@ jobs:
       - name: Test access
         run: |
           wget --no-check-certificate \
-            --tries 10 \
+            --tries=20 \
+            --retry-on-host-error \
+            --retry-on-http-error=404,503 \
             -S \
             -O - \
             "https://rm3lorg-127-0-0-1.sslip.io/" || exit 1
+
+      - run: |
+          echo ***All***
+          kubectl get all --all-namespaces
+          echo
+          echo ***Events***
+          kubectl get events --all-namespaces
+        if: ${{ failure() }}
