@@ -1,6 +1,8 @@
 # Builder
 FROM debian:stable-slim AS builder
 
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
         ca-certificates \
@@ -19,10 +21,10 @@ WORKDIR /code
 
 ARG BASE_URL="http://127.0.0.1.nio.io/"
 
-RUN bash -c "source $HOME/.asdf/asdf.sh && \
+RUN source $HOME/.asdf/asdf.sh && \
     asdf plugin add hugo && \
     asdf install hugo $(grep hugo /code/.tool-versions | awk '{print $2}') && \
-    hugo --minify --baseURL=$BASE_URL"
+    hugo --minify --baseURL=$BASE_URL
 
 # Main image
 FROM nginx:1.23.2-alpine
