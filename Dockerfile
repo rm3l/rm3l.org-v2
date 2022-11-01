@@ -21,8 +21,7 @@ ARG BASE_URL="http://127.0.0.1.nio.io/"
 
 RUN bash -c "source $HOME/.asdf/asdf.sh && \
     asdf plugin add hugo && \
-    asdf plugin add odo && \
-    asdf install && \
+    asdf install hugo $(grep hugo /code/.tool-versions | awk '{print $2}') && \
     hugo --minify --baseURL=$BASE_URL"
 
 # Main image
