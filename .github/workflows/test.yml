@@ -31,10 +31,46 @@ jobs:
         with:
           submodules: recursive
 
+      - name: Generate KinD Config
+        run: |
+          cat <<EOF > /tmp/kind-config.yaml
+          kind: Cluster
+          apiVersion: kind.x-k8s.io/v1alpha4
+          containerdConfigPatches:
+          -  |-
+             [plugins."io.containerd.grpc.v1.cri".containerd]
+               disable_snapshot_annotations = true
+             [plugins."io.containerd.grpc.v1.cri".registry.mirrors."localhost:5000"]
+               endpoint = ["http://kind-registry:5000"]
+          nodes:
+              - role: control-plane
+                kubeadmConfigPatches:
+                - |
+                  kind: InitConfiguration
+                  nodeRegistration:
+                    kubeletExtraArgs:
+                      node-labels: "ingress-ready=true"
+                extraPortMappings:
+                - containerPort: 80
+                  hostPort: 80
+                  protocol: TCP
+                - containerPort: 443
+                  hostPort: 443
+                  protocol: TCP
+              - role: worker
+                kubeadmConfigPatches:
+                - |
+                  kind: JoinConfiguration
+                  nodeRegistration:
+                    kubeletExtraArgs:
+                      node-labels: "kubernetes.io/os=linux"
+          EOF
+
       - name: Spawn Kubernetes Cluster and local registry
         uses: container-tools/kind-action@v2
         with:
           version: v0.17.0
+          config: /tmp/kind-config.yaml
           node_image: kindest/node:v1.25.3
 
       - name: Wait for cluster resources to be ready
@@ -46,7 +82,10 @@ jobs:
         run: |
           kubectl apply -f \
             https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml
-          kubectl -n ingress-nginx rollout status deployment ingress-nginx-controller --timeout=300s
+          kubectl wait --namespace ingress-nginx \
+            --for=condition=ready pod \
+            --selector=app.kubernetes.io/component=controller \
+            --timeout=90s
 
       - run: |
           echo ***All***
@@ -54,7 +93,7 @@ jobs:
           echo
           echo ***Events***
           kubectl get events --all-namespaces
-        if: ${{ always() }}
+        if: ${{ failure() }}
 
       - name: Install asdf dependencies
         uses: asdf-vm/actions/install@v1
@@ -65,6 +104,14 @@ jobs:
             --var CONTAINER_IMAGE=${{ env.KIND_REGISTRY }}/rm3l/rm3l.org-v2 \
             --var CONTAINER_IMAGE_TAG=${{ github.sha }} \
             --var DOMAIN_NAME=rm3lorg-127-0-0-1.sslip.io
+
+      - run: |
+          echo ***All***
+          kubectl get all --all-namespaces
+          echo
+          echo ***Events***
+          kubectl get events --all-namespaces
+        if: ${{ failure() }}
 
       - name: Test access to contact page
         run: |
