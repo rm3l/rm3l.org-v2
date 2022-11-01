@@ -16,7 +16,7 @@ env:
 
 jobs:
   deploy-preview:
-    if: github.event.pull_request.state == open
+    if: ${{ github.event.pull_request.state == 'open' }}
     permissions:
       contents: read
       pull-requests: write
@@ -83,7 +83,7 @@ jobs:
           reactions: rocket
 
   delete_resources_for_pr:
-    if: github.event.pull_request.state == closed
+    if: ${{ github.event.pull_request.state == 'closed' }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
