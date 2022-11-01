@@ -31,6 +31,13 @@ jobs:
         with:
           submodules: recursive
 
+      - uses: actions/setup-go@v3
+        with:
+          go-version: '^1.17'
+
+      - name: Install asdf dependencies
+        uses: asdf-vm/actions/install@v1
+
       - name: Generate KinD Config
         run: |
           cat <<EOF > /tmp/kind-config.yaml
@@ -94,9 +101,6 @@ jobs:
           echo ***Events***
           kubectl get events --all-namespaces
         if: ${{ failure() }}
-
-      - name: Install asdf dependencies
-        uses: asdf-vm/actions/install@v1
 
       - name: Deploy locally with odo
         run: |
