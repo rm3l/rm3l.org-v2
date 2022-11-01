@@ -49,8 +49,8 @@ jobs:
           -  |-
              [plugins."io.containerd.grpc.v1.cri".containerd]
                disable_snapshot_annotations = true
-            #  [plugins."io.containerd.grpc.v1.cri".registry.mirrors."localhost:5000"]
-            #    endpoint = ["http://kind-registry:5000"]
+             [plugins."io.containerd.grpc.v1.cri".registry.mirrors."localhost:5000"]
+               endpoint = ["http://kind-registry:5000"]
           nodes:
               - role: control-plane
                 kubeadmConfigPatches:
@@ -101,7 +101,7 @@ jobs:
       - name: Deploy locally with odo
         run: |
           odo deploy -v 4 \
-            --var CONTAINER_IMAGE=${{ env.KIND_REGISTRY }}/rm3l/rm3l.org-v2 \
+            --var CONTAINER_IMAGE=localhost:5000/rm3l/rm3l.org-v2 \
             --var CONTAINER_IMAGE_TAG=${{ github.sha }} \
             --var DOMAIN_NAME=rm3lorg-127-0-0-1.sslip.io
 
