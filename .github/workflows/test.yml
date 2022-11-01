@@ -48,8 +48,13 @@ jobs:
             https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml
           kubectl -n ingress-nginx rollout status deployment ingress-nginx-controller --timeout=300s
 
-      - run: kubectl get all --all-namespaces
-        if: ${{ failure() }}
+      - run: |
+          echo ***All***
+          kubectl get all --all-namespaces
+          echo
+          echo ***Events***
+          kubectl get events --all-namespaces
+        if: ${{ always() }}
 
       - name: Install asdf dependencies
         uses: asdf-vm/actions/install@v1
