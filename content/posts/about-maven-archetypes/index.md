@@ -15,6 +15,8 @@ resources:
 ---
 
 
+TESTING PREVIEW URLS!!!
+
 I've been using Maven Archetypes for several years as helpers to quickly bootstrap a Maven Project. Few years ago, in an attempt to debug some of those archetypes, I found little to no resource out there to make them log useful messages, apart from using the (way too) verbose Maven Debug option.
 
 The goal of this tutorial post is to first give a quick introduction to Maven Archetypes, then show how we can easily create and use one, and finally provide few tips I think can be useful to bear in mind.
