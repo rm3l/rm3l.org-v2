@@ -60,7 +60,7 @@ jobs:
           odo deploy -v 4 \
             --var ACCESS_PATH=/pr-"${PR_NUMBER}" \
             --var CONTAINER_IMAGE=docker.io/rm3l/rm3l.org \
-            --var CONTAINER_IMAGE_TAG=pr-"${PR_NUMBER}" \
+            --var CONTAINER_IMAGE_TAG=pr-"${PR_NUMBER}-${{ env.GITHUB_SHA }}" \
             --var DOMAIN_NAME=website-preview.rm3l.org
 
       - name: Test access
@@ -102,6 +102,8 @@ jobs:
 
       - name: Delete component
         run: |
+          mkdir -p /tmp
+          cd /tmp
           odo delete component \
             --namespace "pr-${PR_NUMBER}" \
             --name "rm3l-org-pr-${PR_NUMBER}" \
