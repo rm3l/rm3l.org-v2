@@ -97,7 +97,6 @@ jobs:
           odo deploy -v 4 \
             --var CONTAINER_IMAGE=localhost:5000/rm3l/rm3l.org-v2 \
             --var CONTAINER_IMAGE_TAG=${{ github.sha }} \
-            --var DEPLOY_INGRESS_CLASS=nginx \
             --var DOMAIN_NAME=rm3lorg-127-0-0-1.sslip.io
 
       - run: |

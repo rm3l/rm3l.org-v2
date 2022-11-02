@@ -62,6 +62,7 @@ jobs:
             --var CONTAINER_IMAGE=docker.io/rm3l/rm3l.org \
             --var CONTAINER_IMAGE_TAG=pr-"${PR_NUMBER}-${{ env.GITHUB_SHA }}" \
             --var DEPLOY_CERTMANAGER_CLUSTERISSUER="${{ secrets.CERTMANAGER_CLUSTERISSUER_PREVIEW_URLS }}" \
+            --var DEPLOY_INGRESS_CLASS=traefik \
             --var DOMAIN_NAME=website-preview.rm3l.org \
             --var RESOURCE_NAME="rm3l-org-v2-pr-${PR_NUMBER}"
 

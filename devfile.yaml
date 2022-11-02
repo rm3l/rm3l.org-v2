@@ -19,7 +19,7 @@ variables:
   CONTAINER_PORT: "80"
   DOMAIN_NAME: 127.0.0.1.nip.io
   DEPLOY_CERTMANAGER_CLUSTERISSUER: letsencrypt-staging
-  DEPLOY_INGRESS_CLASS: traefik
+  DEPLOY_INGRESS_CLASS: nginx
   RESOURCE_NAME: rm3l-org-v2
 
 components:
