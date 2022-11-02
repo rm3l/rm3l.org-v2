@@ -10,6 +10,7 @@ defaults:
     shell: bash
 
 env:
+  DOMAIN_NAME: "pr-${{ github.event.number }}.website-preview.rm3l.org"
   ODO_DISABLE_TELEMETRY: "true"
   PODMAN_CMD: "docker"
   PR_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
@@ -56,15 +57,20 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_PASSWORD }}
 
+      - name: Create DNS record if needed
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: |
+          .cloudflare/scripts/add_dns_record.sh "$DOMAIN_NAME" CNAME "${{ secrets.CLOUDFLARE_DNS_CNAME_TARGET }}"
+
       - name: Deploy locally with odo
         run: |
           odo deploy -v 4 \
-            --var ACCESS_PATH=/pr-"${PR_NUMBER}" \
             --var CONTAINER_IMAGE=docker.io/rm3l/rm3l.org \
             --var CONTAINER_IMAGE_TAG=pr-"${PR_NUMBER}-${{ env.PR_HEAD_SHA }}" \
             --var DEPLOY_CERTMANAGER_CLUSTERISSUER="${{ secrets.CERTMANAGER_CLUSTERISSUER_PREVIEW_URLS }}" \
             --var DEPLOY_INGRESS_CLASS=traefik \
-            --var DOMAIN_NAME=website-preview.rm3l.org \
+            --var DOMAIN_NAME \
             --var RESOURCE_NAME="rm3l-org-v2-pr-${PR_NUMBER}"
 
       - name: Test access
@@ -75,7 +81,7 @@ jobs:
             --retry-on-http-error=404,503 \
             -S \
             -O - \
-            "https://website-preview.rm3l.org/pr-${PR_NUMBER}/" || exit 1
+            "https://$DOMAIN_NAME/" || exit 1
 
       - name: Add PR comment with preview URL
         uses: thollander/actions-comment-pull-request@v1
@@ -86,7 +92,7 @@ jobs:
             |  Name | Link |
             |---------------------------------|------------------------|
             |<span aria-hidden="true">🔨</span> Latest commit | ${{ env.PR_HEAD_SHA }} |
-            |<span aria-hidden="true">😎</span> Deploy Preview | [https://website-preview.rm3l.org/pr-${{ env.PR_NUMBER }}](https://website-preview.rm3l.org/pr-${{ env.PR_NUMBER }}) |
+            |<span aria-hidden="true">😎</span> Deploy Preview | [https://$DOMAIN_NAME/](https://$DOMAIN_NAME/) |
           comment_includes: 'Deploy Preview'
           pr_number: ${{ env.PR_NUMBER }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -101,8 +107,17 @@ jobs:
         with:
           submodules: recursive
 
+      - name: Delete DNS record if needed
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: |
+          .cloudflare/scripts/delete_dns_record.sh "$DOMAIN_NAME"
+
       - name: Install asdf dependencies
         uses: asdf-vm/actions/install@v1
+
+      - run: |
+          asdf global odo `grep odo .tool-versions | awk '{print $2}'`
 
       - name: Generate Kubeconfig
         run: |
@@ -112,14 +127,12 @@ jobs:
 
       - name: Delete component
         run: |
-          mkdir -p /tmp
-          cd /tmp
+          mkdir -p /tmp && cd /tmp
           odo delete component \
             --namespace "pr-${PR_NUMBER}" \
             --name "rm3l-org-pr-${PR_NUMBER}" \
             --force \
-            --wait \
-          || true
+            --wait
 
       - name: Delete namespace
         if: ${{ always() }}
@@ -127,4 +140,5 @@ jobs:
           odo delete namespace "pr-${PR_NUMBER}" \
             --wait \
             --force \
-          || true
+          || echo "Could not delete namespace pr-${PR_NUMBER} - please delete it manually!"
+
