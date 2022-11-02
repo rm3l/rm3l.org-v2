@@ -14,6 +14,8 @@ toc:
 
 <link rel="stylesheet" href="../css/form.css">
 
+<h1>This is a test message</h1>
+
 You will find my [GPG](http://en.wikipedia.org/wiki/GNU_Privacy_Guard) public key at the [bottom of this page](#pgp-public-key).
 
 For privacy purposes, I do encourage you to use GPG strong encryption mechanisms with this key when reaching out.
