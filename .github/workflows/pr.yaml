@@ -12,6 +12,7 @@ defaults:
 env:
   ODO_DISABLE_TELEMETRY: "true"
   PODMAN_CMD: "docker"
+  PR_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
   PR_NUMBER: ${{ github.event.number }}
 
 jobs:
@@ -60,7 +61,7 @@ jobs:
           odo deploy -v 4 \
             --var ACCESS_PATH=/pr-"${PR_NUMBER}" \
             --var CONTAINER_IMAGE=docker.io/rm3l/rm3l.org \
-            --var CONTAINER_IMAGE_TAG=pr-"${PR_NUMBER}-${{ env.GITHUB_SHA }}" \
+            --var CONTAINER_IMAGE_TAG=pr-"${PR_NUMBER}-${{ env.PR_HEAD_SHA }}" \
             --var DEPLOY_CERTMANAGER_CLUSTERISSUER="${{ secrets.CERTMANAGER_CLUSTERISSUER_PREVIEW_URLS }}" \
             --var DEPLOY_INGRESS_CLASS=traefik \
             --var DOMAIN_NAME=website-preview.rm3l.org \
@@ -84,7 +85,7 @@ jobs:
 
             |  Name | Link |
             |---------------------------------|------------------------|
-            |<span aria-hidden="true">🔨</span> Latest commit | ${{ env.GITHUB_SHA }} |
+            |<span aria-hidden="true">🔨</span> Latest commit | ${{ env.PR_HEAD_SHA }} |
             |<span aria-hidden="true">😎</span> Deploy Preview | [https://website-preview.rm3l.org/pr-${{ env.PR_NUMBER }}](https://website-preview.rm3l.org/pr-${{ env.PR_NUMBER }}) |
           comment_includes: 'Deploy Preview'
           pr_number: ${{ env.PR_NUMBER }}
