@@ -12,7 +12,7 @@ toc:
   enable: false
 ---
 
-<link rel="stylesheet" href="/css/form.css">
+<link rel="stylesheet" href="../css/form.css">
 
 You will find my [GPG](http://en.wikipedia.org/wiki/GNU_Privacy_Guard) public key at the [bottom of this page](#pgp-public-key).
 
