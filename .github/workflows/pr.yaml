@@ -31,7 +31,7 @@ jobs:
         uses: asdf-vm/actions/install@v1
 
       - run: |
-          yq -i e '.metadata.name = rm3l-org-pr-${{ env.PR_NUMBER }}' devfile.yaml
+          yq w -i devfile.yaml metadata.name "rm3l-org-pr-${{ env.PR_NUMBER }}"
 
       - name: Generate Kubeconfig
         run: |
