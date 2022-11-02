@@ -20,6 +20,7 @@ For privacy purposes, I do encourage you to use GPG strong encryption mechanisms
 
 Fingerprint is: `86DD A4D3 F3B5 8546 CC49 1BE3 921B 0A87 C13C FD83`
 
+**This is a test!!!**
 
 <script type="text/javascript">var submitted=false;</script>
 <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) {window.location='/contact/thank-you';}"></iframe>
