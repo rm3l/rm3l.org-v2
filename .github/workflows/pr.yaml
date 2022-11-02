@@ -76,7 +76,7 @@ jobs:
       - name: Add PR comment with preview URL
         uses: thollander/actions-comment-pull-request@v1
         with:
-          message: 'PR Preview: https://website-preview.rm3l.org/pr-${{ env.PR_NUMBER }}'
+          message: 'PR Preview: [https://website-preview.rm3l.org/pr-${{ env.PR_NUMBER }}](https://website-preview.rm3l.org/pr-${{ env.PR_NUMBER }})'
           comment_includes: 'PR Preview: '
           pr_number: ${{ env.PR_NUMBER }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
