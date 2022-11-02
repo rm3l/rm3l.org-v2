@@ -14,10 +14,12 @@ metadata:
 variables:
   ACCESS_PATH: "/"
   ACCESS_PROTOCOL: https
-  CONTAINER_IMAGE_TAG: 2.0.9
+  CONTAINER_IMAGE_TAG: 2.1.0
   CONTAINER_IMAGE: localhost:5000/org.rm3l/rm3l.org
   CONTAINER_PORT: "80"
   DOMAIN_NAME: 127.0.0.1.nip.io
+  DEPLOY_CERTMANAGER_CLUSTERISSUER: letsencrypt-staging
+  DEPLOY_INGRESS_CLASS: traefik
   RESOURCE_NAME: rm3l-org-v2
 
 components:
