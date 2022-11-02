@@ -37,7 +37,7 @@ jobs:
         run: |
           mkdir -p ~/.kube
           echo "${{ secrets.KUBECONFIG }}" > ~/.kube/config
-          chmod 400 ~/.kube/config
+          chmod 600 ~/.kube/config
 
       - name: Create and set namespace
         run: |
@@ -98,7 +98,7 @@ jobs:
         run: |
           mkdir -p ~/.kube
           echo "${{ secrets.KUBECONFIG }}" > ~/.kube/config
-          chmod 400 ~/.kube/config
+          chmod 600 ~/.kube/config
 
       - name: Delete component
         run: |
