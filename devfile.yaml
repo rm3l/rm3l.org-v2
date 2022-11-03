@@ -5,7 +5,7 @@ metadata:
   displayName: rm3l.org
   language: Go
   name: rm3l-org-v2
-  projectType: Go
+  projectType: Hugo
   tags:
   - Go
   - Hugo
