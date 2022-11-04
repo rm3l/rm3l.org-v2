@@ -9,7 +9,7 @@ metadata:
   attributes:
 #     alpha.build-context: src
     alpha.build-dockerfile: Dockerfile
-    alpha.dockerimage-port: 80
+    alpha.dockerimage-port: "80"
   tags:
   - Go
   - Hugo
