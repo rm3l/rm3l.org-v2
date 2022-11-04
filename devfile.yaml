@@ -6,10 +6,10 @@ metadata:
   language: Go
   name: rm3l-org-v2
   projectType: Hugo
-  attributes:
-#     alpha.build-context: src
-    alpha.build-dockerfile: Dockerfile
-    alpha.dockerimage-port: "80"
+#   attributes:
+##     alpha.build-context: src
+#     alpha.build-dockerfile: Dockerfile
+#     alpha.dockerimage-port: "80"
   tags:
   - Go
   - Hugo
@@ -81,7 +81,7 @@ commands:
     group:
       isDefault: true
       kind: run
-#     workingDir: ${PROJECT_SOURCE}
+    workingDir: ${PROJECT_SOURCE}
 
 - id: deploy
   composite:
