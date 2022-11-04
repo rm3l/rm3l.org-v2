@@ -44,4 +44,6 @@ RUN mkdir -p "/usr/share/nginx/html${WEBSITE_PATH}" && \
 
 WORKDIR /usr/share/nginx/html${WEBSITE_PATH}
 
+EXPOSE 80
+
 RUN sh -c 'if [ "$WEBSITE_PATH" != "/" ]; then rm -rf /usr/share/nginx/html/*.html; fi'
