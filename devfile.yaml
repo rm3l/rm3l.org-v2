@@ -6,6 +6,9 @@ metadata:
   language: Go
   name: rm3l-org-v2
   projectType: Hugo
+  attributes:
+#     alpha.build-context: src
+    alpha.build-dockerfile: Dockerfile
   tags:
   - Go
   - Hugo
