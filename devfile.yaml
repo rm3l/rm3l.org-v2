@@ -51,7 +51,7 @@ components:
       - 'WEBSITE_PATH={{ ACCESS_PATH }}'
       - --build-arg
       - 'BASE_URL={{ ACCESS_PROTOCOL }}://{{ DOMAIN_NAME }}{{ ACCESS_PATH }}'
-      buildContext: ${PROJECT_SOURCE}
+#       buildContext: ${PROJECT_SOURCE}
       rootRequired: false
 
 - name: outerloop-deployment
@@ -81,7 +81,7 @@ commands:
     group:
       isDefault: true
       kind: run
-    workingDir: ${PROJECT_SOURCE}
+#     workingDir: ${PROJECT_SOURCE}
 
 - id: deploy
   composite:
