@@ -1,6 +1,6 @@
 ---
 title: "Thanks for reaching out!"
-date: 2021-08-02T22:04:49+08:00
+date: 2022-11-07T22:04:49+08:00
 draft: false
 url: "/contact/thank-you"
 description: "Thanks for contacting me"
@@ -10,6 +10,10 @@ share:
   enable: false
 toc:
   enable: false
+# footer:
+#   enable: false
+linktomarkdown: false
+improvearticle: false
 ---
 
-<h2><center>I'll get back to you as soon as possible.</center></h2>
+<center>I'll get back to you as soon as possible.</center>
