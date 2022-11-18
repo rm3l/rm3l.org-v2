@@ -1,3 +1,6 @@
+# ARG WEBSERVER_PROD_IMAGE=nginx:1.23.2-alpine
+ARG WEBSERVER_PROD_IMAGE=cgr.dev/chainguard/nginx:1.23.1
+
 # Builder
 FROM debian:stable-slim AS builder
 
@@ -27,23 +30,31 @@ RUN source "$HOME/.asdf/asdf.sh" && \
     hugo --minify --baseURL="$BASE_URL"
 
 # Main image
-FROM nginx:1.23.2-alpine
+FROM $WEBSERVER_PROD_IMAGE
 
-COPY .docker/expires.inc /etc/nginx/conf.d/expires.inc
-RUN chmod 0644 /etc/nginx/conf.d/expires.inc && \
-    sed -i '9i\        include /etc/nginx/conf.d/expires.inc;\n' /etc/nginx/conf.d/default.conf
+#ARG NGINX_HTML_ROOT="/usr/share/nginx/html"
+ARG NGINX_HTML_ROOT="/var/lib/nginx/html"
+
+#COPY .docker/expires.inc /etc/nginx/conf.d/expires.inc
+#RUN chmod 0644 /etc/nginx/conf.d/expires.inc && \
+#    sed -i '9i\        include /etc/nginx/conf.d/expires.inc;\n' /etc/nginx/conf.d/default.conf
 
 ARG WEBSITE_PATH="/"
 
 RUN mkdir -p "/tmp${WEBSITE_PATH}"
 COPY --from=builder /code/public /tmp/website_data
 
-RUN mkdir -p "/usr/share/nginx/html${WEBSITE_PATH}" && \
-    mv /tmp/website_data/* "/usr/share/nginx/html${WEBSITE_PATH}/" && \
+USER root
+
+RUN mkdir -p "${NGINX_HTML_ROOT}${WEBSITE_PATH}" && \
+    mv /tmp/website_data/* "${NGINX_HTML_ROOT}${WEBSITE_PATH}" && \
     rm -rf /tmp/website_data
 
-WORKDIR /usr/share/nginx/html${WEBSITE_PATH}
+USER nginx
+
+#WORKDIR /usr/share/nginx/html${WEBSITE_PATH}
+WORKDIR ${NGINX_HTML_ROOT}${WEBSITE_PATH}
 
 EXPOSE 80
 
-RUN sh -c 'if [ "$WEBSITE_PATH" != "/" ]; then rm -rf /usr/share/nginx/html/*.html; fi'
+RUN sh -c 'if [ "$WEBSITE_PATH" != "/" ]; then rm -rf ${NGINX_HTML_ROOT}/html/*.html; fi'
