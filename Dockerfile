@@ -1,5 +1,27 @@
-# Builder
-FROM debian:stable-slim AS builder
+# Server Builder
+FROM debian:stable-slim AS server-builder
+
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+        ca-certificates \
+        curl \
+        git \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN git clone https://github.com/asdf-vm/asdf.git ~/.asdf
+
+COPY . /code
+WORKDIR /code
+
+RUN source "$HOME/.asdf/asdf.sh" && \
+    asdf plugin add golang && \
+    asdf install golang "$(grep golang /code/.tool-versions | awk '{print $2}')" && \
+    CGO_ENABLED=0 go build -o ./server server.go
+
+# Website Builder
+FROM debian:stable-slim AS website-builder
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
@@ -27,23 +49,11 @@ RUN source "$HOME/.asdf/asdf.sh" && \
     hugo --minify --baseURL="$BASE_URL"
 
 # Main image
-FROM nginx:1.23.2-alpine
+FROM cgr.dev/chainguard/static:latest
 
-COPY .docker/expires.inc /etc/nginx/conf.d/expires.inc
-RUN chmod 0644 /etc/nginx/conf.d/expires.inc && \
-    sed -i '9i\        include /etc/nginx/conf.d/expires.inc;\n' /etc/nginx/conf.d/default.conf
+COPY --from=server-builder /code/server ./
+COPY --from=website-builder /code/public ./public
 
-ARG WEBSITE_PATH="/"
+ENV PORT="8888"
 
-RUN mkdir -p "/tmp${WEBSITE_PATH}"
-COPY --from=builder /code/public /tmp/website_data
-
-RUN mkdir -p "/usr/share/nginx/html${WEBSITE_PATH}" && \
-    mv /tmp/website_data/* "/usr/share/nginx/html${WEBSITE_PATH}/" && \
-    rm -rf /tmp/website_data
-
-WORKDIR /usr/share/nginx/html${WEBSITE_PATH}
-
-EXPOSE 80
-
-RUN sh -c 'if [ "$WEBSITE_PATH" != "/" ]; then rm -rf /usr/share/nginx/html/*.html; fi'
+CMD [ "./server" ]

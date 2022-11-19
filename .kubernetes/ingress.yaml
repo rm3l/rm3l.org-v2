@@ -21,7 +21,7 @@ spec:
     - host: "{{DOMAIN_NAME}}"
       http:
         paths:
-          - path: "{{ ACCESS_PATH }}"
+          - path: "/"
             pathType: Prefix
             backend:
               service:
