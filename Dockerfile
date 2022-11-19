@@ -18,7 +18,8 @@ WORKDIR /code
 RUN source "$HOME/.asdf/asdf.sh" && \
     asdf plugin add golang && \
     asdf install golang "$(grep golang /code/.tool-versions | awk '{print $2}')" && \
-    CGO_ENABLED=0 go build -o ./server server.go
+    mkdir -p /var/lib/rm3l-org && \
+    CGO_ENABLED=0 go build -o /var/lib/rm3l-org/server server.go
 
 # Website Builder
 FROM debian:stable-slim AS website-builder
@@ -49,11 +50,12 @@ RUN source "$HOME/.asdf/asdf.sh" && \
     hugo --minify --baseURL="$BASE_URL"
 
 # Main image
-FROM cgr.dev/chainguard/static:latest
+FROM scratch
 
-COPY --from=server-builder /code/server ./
-COPY --from=website-builder /code/public ./public
+COPY --from=server-builder /var/lib/rm3l-org/server /var/lib/rm3l-org/
+COPY --from=website-builder /code/public /var/lib/rm3l-org/public
 
 ENV PORT="8888"
 
+WORKDIR /var/lib/rm3l-org
 CMD [ "./server" ]
