@@ -37,5 +37,3 @@ COPY --from=builder /code/public /tmp/website_data
 USER root
 
 RUN mv /tmp/website_data/* "${NGINX_HTML_ROOT}/" && rm -rf /tmp/website_data
-
-USER nginx
