@@ -10,10 +10,12 @@ share:
   enable: false
 toc:
   enable: false
-# footer:
-#   enable: false
 linktomarkdown: false
 improvearticle: false
 ---
+
+<p align="center">
+  <img src="../../thank-you.jpg" alt="Thank You" />
+</p>
 
 <center>I'll get back to you as soon as possible.</center>
