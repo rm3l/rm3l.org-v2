@@ -6,21 +6,16 @@ metadata:
   language: Go
   name: rm3l-org-v2
   projectType: Hugo
-#   attributes:
-##     alpha.build-context: src
-#     alpha.build-dockerfile: Dockerfile
-#     alpha.dockerimage-port: "80"
   tags:
   - Go
   - Hugo
   version: 2.0.0
 
 variables:
-  ACCESS_PATH: "/"
   ACCESS_PROTOCOL: https
   CONTAINER_IMAGE_TAG: 2.1.0
   CONTAINER_IMAGE: localhost:5000/org.rm3l/rm3l.org
-  CONTAINER_PORT: "80"
+  CONTAINER_PORT: "8888"
   DOMAIN_NAME: 127.0.0.1.nip.io
   DEPLOY_CERTMANAGER_CLUSTERISSUER: letsencrypt-staging
   DEPLOY_INGRESS_CLASS: nginx
@@ -48,9 +43,7 @@ components:
       uri: ./Dockerfile
       args:
       - --build-arg
-      - 'WEBSITE_PATH={{ ACCESS_PATH }}'
-      - --build-arg
-      - 'BASE_URL={{ ACCESS_PROTOCOL }}://{{ DOMAIN_NAME }}{{ ACCESS_PATH }}'
+      - 'BASE_URL={{ ACCESS_PROTOCOL }}://{{ DOMAIN_NAME }}/'
       buildContext: ${PROJECT_SOURCE}
       rootRequired: false
 
