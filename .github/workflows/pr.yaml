@@ -114,6 +114,21 @@ jobs:
         run: |
           .cloudflare/scripts/delete_dns_record.sh "$DOMAIN_NAME"
 
+      - name: Update PR comment about preview URL
+        uses: thollander/actions-comment-pull-request@v1
+        with:
+          message: |
+            ### <span aria-hidden="true">🔨</span> Deploy Preview deleted!
+
+            |  Name | Link |
+            |---------------------------------|------------------------|
+            |<span aria-hidden="true">🔨</span> Latest commit | ${{ env.PR_HEAD_SHA }} |
+            |<span aria-hidden="true">😎</span> Deploy Preview | ~[https://${{ env.DOMAIN_NAME }}/](https://${{ env.DOMAIN_NAME }}/)~ |
+          comment_includes: 'Deploy Preview'
+          pr_number: ${{ env.PR_NUMBER }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          reactions: recycle
+
       - name: Install asdf dependencies
         uses: asdf-vm/actions/install@v1
 
