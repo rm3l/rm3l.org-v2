@@ -35,7 +35,7 @@ components:
     args:
     - -f
     - /dev/null
-    memoryLimit: 1024Mi
+    memoryLimit: 512Mi
     mountSources: true
     endpoints:
     - name: hugo
