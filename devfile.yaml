@@ -19,13 +19,12 @@ variables:
   DOMAIN_NAME: 127.0.0.1.nip.io
   DEPLOY_CERTMANAGER_CLUSTERISSUER: letsencrypt-staging
   DEPLOY_INGRESS_CLASS: nginx
-  HUGO_VERSION: 0.105.0
   RESOURCE_NAME: rm3l-org-v2
 
 components:
 - name: runtime
   container:
-    image: "hubci/hugo:{{ HUGO_VERSION }}"
+    image: quay.io/devfile/golang:latest
     command:
     - tail
     args:
@@ -61,6 +60,12 @@ components:
     uri: ".kubernetes/ingress.yaml"
 
 commands:
+- id: 0-install-hugo
+  exec:
+    commandLine: |
+      curl -sL https://github.com/gohugoio/hugo/releases/download/v0.104.3/hugo_extended_0.104.3_linux-amd64.tar.gz | tar -vxzC /usr/local/bin
+    component: runtime
+
 - id: 1-start-hugo-server
   exec:
     commandLine: hugo server --verbose --watch --buildDrafts --disableFastRender
@@ -94,3 +99,7 @@ commands:
 - id: k8s-url
   apply:
     component: outerloop-url
+
+events:
+  postStart:
+  - 0-install-hugo
