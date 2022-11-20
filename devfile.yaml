@@ -19,7 +19,7 @@ variables:
   DOMAIN_NAME: 127.0.0.1.nip.io
   DEPLOY_CERTMANAGER_CLUSTERISSUER: letsencrypt-staging
   DEPLOY_INGRESS_CLASS: nginx
-  HUGO_VERSION: 0.105.0
+  HUGO_VERSION: 0.106.0
   RESOURCE_NAME: rm3l-org-v2
 
 components:
