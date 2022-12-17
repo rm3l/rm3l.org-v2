@@ -9,11 +9,11 @@ metadata:
   tags:
   - Go
   - Hugo
-  version: 2.3.0
+  version: 2.4.0
 
 variables:
   ACCESS_PROTOCOL: https
-  CONTAINER_IMAGE_TAG: 2.3.0
+  CONTAINER_IMAGE_TAG: 2.4.0
   CONTAINER_IMAGE: localhost:5000/org.rm3l/rm3l.org
   CONTAINER_PORT: "8888"
   DOMAIN_NAME: 127.0.0.1.nip.io
@@ -25,7 +25,7 @@ variables:
 components:
 - name: runtime
   container:
-    image: registry.access.redhat.com/ubi9/go-toolset:latest
+    image: docker.io/klakegg/hugo:{{ HUGO_VERSION }}-ext
     command:
     - tail
     args:
@@ -53,15 +53,9 @@ components:
     uri: ".kubernetes/resources.yaml"
 
 commands:
-- id: 0-install-hugo
-  exec:
-    commandLine: |
-      curl -sL https://github.com/gohugoio/hugo/releases/download/v{{ HUGO_VERSION }}/hugo_extended_{{ HUGO_VERSION }}_linux-amd64.tar.gz | tar -vxzC ~/
-    component: runtime
-
 - id: 1-start-hugo-server
   exec:
-    commandLine: ~/hugo server --verbose --watch --buildDrafts --disableFastRender
+    commandLine: hugo server --verbose --watch --buildDrafts --disableFastRender
     component: runtime
     hotReloadCapable: true
     group:
@@ -69,22 +63,19 @@ commands:
       kind: run
     workingDir: ${PROJECT_SOURCE}
 
-- id: deploy
+- id: 2-deploy
   composite:
     commands:
-    - build-image
-    - k8s-resources
+    - 20-build-image
+    - 21-k8s-resources
     group:
       isDefault: true
       kind: deploy
 
-- id: build-image
+- id: 20-build-image
   apply:
     component: outerloop-build
-- id: k8s-resources
+
+- id: 21-k8s-resources
   apply:
     component: outerloop-resources
-
-events:
-  postStart:
-  - 0-install-hugo
