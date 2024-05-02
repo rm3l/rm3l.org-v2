@@ -147,14 +147,15 @@ jobs:
           odo delete component \
             --namespace "$NAMESPACE" \
             --name "rm3l-org-pr-${PR_NUMBER}" \
+            --platform cluster \
             --force \
-            --wait
+            --wait=false
 
       - name: Delete namespace
         if: ${{ always() }}
         run: |
           odo delete namespace "$NAMESPACE" \
-            --wait \
+            --wait=false \
             --force \
           || echo "Could not delete namespace $NAMESPACE - please delete it manually!"
 
