@@ -22,10 +22,10 @@ spec:
             - name: http
               containerPort: {{CONTAINER_PORT}}
               protocol: TCP
-          resources:
-            limits:
-              memory: "512Mi"
-              cpu: "500m"
+          resources: {}
+            #limits:
+            #  memory: "512Mi"
+            #  cpu: "500m"
 
 ---
 apiVersion: v1
