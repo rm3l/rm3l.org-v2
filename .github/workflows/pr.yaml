@@ -31,7 +31,7 @@ jobs:
           submodules: recursive
 
       - name: Install asdf dependencies
-        uses: asdf-vm/actions/install@v1
+        uses: asdf-vm/actions/install@v3
 
       - run: |
           yq -i '.metadata.name = "rm3l-org-pr-${{ env.PR_NUMBER }}"' devfile.yaml
@@ -130,7 +130,7 @@ jobs:
           reactions: recycle
 
       - name: Install asdf dependencies
-        uses: asdf-vm/actions/install@v1
+        uses: asdf-vm/actions/install@v3
 
       - run: |
           asdf global odo `grep odo .tool-versions | awk '{print $2}'`
