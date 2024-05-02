@@ -35,7 +35,7 @@ jobs:
           submodules: recursive
 
       - name: Install asdf dependencies
-        uses: asdf-vm/actions/install@v1
+        uses: asdf-vm/actions/install@v3
 
       - name: Setup Pages
         id: pages
