@@ -1,0 +1,13 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: rm3l.org-v2
+  annotations:
+    github.com/project-slug: rm3l/rm3l.org-v2
+
+    # feedback plugin: https://github.com/janus-idp/backstage-plugins/blob/main/plugins/feedback/README.md
+    feedback/type: 'JIRA'
+    jira/project-key: 'KAN'
+spec:
+  type: other
+  lifecycle: unknown
