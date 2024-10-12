@@ -85,7 +85,7 @@ jobs:
             "https://$DOMAIN_NAME/" || exit 1
 
       - name: Add PR comment with preview URL
-        uses: thollander/actions-comment-pull-request@v2
+        uses: thollander/actions-comment-pull-request@v3
         with:
           message: |
             ### <span aria-hidden="true">✅</span> Deploy Preview ready!
@@ -115,7 +115,7 @@ jobs:
           .cloudflare/scripts/delete_dns_record.sh "$DOMAIN_NAME"
 
       - name: Update PR comment about preview URL
-        uses: thollander/actions-comment-pull-request@v2
+        uses: thollander/actions-comment-pull-request@v3
         with:
           message: |
             ### <span aria-hidden="true">🔨</span> Deploy Preview deleted!
